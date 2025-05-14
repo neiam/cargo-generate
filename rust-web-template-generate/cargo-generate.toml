@@ -1,0 +1,20 @@
+[template]
+cargo_generate_version = ">=0.18.0"
+
+[placeholders.project-name]
+type = "string"
+prompt = "Project name"
+regex = "^[a-zA-Z][a-zA-Z0-9_-]*$"
+
+[placeholders.project-description]
+type = "string"
+prompt = "Project description"
+default = "A web application built with the MATH stack"
+
+[placeholders.project-author]
+type = "string"
+prompt = "Project author"
+
+[placeholders.project-email]
+type = "string"
+prompt = "Author email"

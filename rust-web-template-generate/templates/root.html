@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="her">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel=icon href=/assets/img/favicon.png>
+    <link rel="stylesheet" href="/assets/css/app.css"/>
+    <script defer type="text/javascript" src="/assets/js/app.js"></script>
+    <title>rust-web-template :: </title>
+</head>
+<body>
+<main class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl">
+        <div class="min-h-[80%] m-10 pt-12 flex justify-center">
+            <div class="max-w-max text-center">
+                <div class="max-w-xl">
+        {% block inner %}
+        {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="p-2 m-2" id="container">
+
+</div>
+</body>
+</html>

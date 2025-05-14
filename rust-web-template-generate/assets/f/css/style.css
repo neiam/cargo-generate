@@ -1,0 +1,16 @@
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.htmx-indicator{
+    opacity:0;
+    transition: opacity 500ms ease-in;
+}
+.htmx-request .htmx-indicator{
+    opacity:1;
+}
+.htmx-request.htmx-indicator{
+    opacity:1;
+}

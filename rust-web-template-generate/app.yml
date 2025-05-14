@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-template
+  labels:
+    name: rust-template
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: rust-template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: rust-template
+    #      annotations:
+    spec:
+      containers:
+        - image: r.g.gmp.io/gmorell/rust-web-template:latest
+          imagePullPolicy: Always
+          #          livenessProbe:
+          #            httpGet:
+          #              path: /health/live
+          #              port: 4040
+          #
+          #            initialDelaySeconds: 90
+          #            periodSeconds: 3
+          #
+          #          readinessProbe:
+          #            httpGet:
+          #              path: /health/ready
+          #              port: 4040
+          #
+          #            initialDelaySeconds: 90
+          #            periodSeconds: 3
+          env:
+            - name: EXAMPLE_CONFIG
+              value: "an-example"
+
+          name: rust-template
+          ports:
+            - containerPort: 3000
+
+      imagePullSecrets:
+        - name: gitlabgmp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rust-template-svc-mtb
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    name: rust-template
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rust-template-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod-n
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+    - hosts:
+        # CHANGE ME
+        - storytime.neiam.org
+      secretName: rust-template-tls
+  rules:
+    # CHANGE ME
+    - host: storytime.neiam.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rust-template-svc-mtb
+                port:
+                  number: 80
