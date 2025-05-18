@@ -7,11 +7,12 @@ This project is a Rust-based web application template generator using Axum, HTMX
 ### Features
 
 - Axum web framework for robust and efficient HTTP handling
+- Tailwind w/ Daisy UI
 - HTMX integration for dynamic content updates
 - Prometheus metrics for monitoring
 - Static file serving with fallback for development
 - Health check endpoints
-- Jinja2 templating for HTML rendering
+- MiniJinja templating for HTML rendering
 - Configuration management using Clap
 - Tracing for logging and diagnostics
 - Docker support for easy deployment
