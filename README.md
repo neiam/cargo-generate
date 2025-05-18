@@ -7,7 +7,7 @@ This project is a Rust-based web application template generator using Axum, HTMX
 ### Features
 
 - Axum web framework for robust and efficient HTTP handling
-- Tailwind w/ Daisy UI
+- Tailwind w/ Daisy UI and NEIAM themes (afterdark / her)
 - HTMX integration for dynamic content updates
 - Prometheus metrics for monitoring
 - Static file serving with fallback for development
